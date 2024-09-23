@@ -7,5 +7,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".RegisterActivity">
+    <TextView
+            android:text="Create an account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/login_title"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintTop_toTopOf="parent"
+            android:textSize="20sp"
+            android:layout_marginTop="210dp" android:textStyle="bold"/>
 
+    <Button
+            android:text="Create"
+            android:layout_width="120dp"
+            android:layout_height="40dp" android:id="@+id/button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="createButtonOnClick"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText4" android:layout_marginTop="15dp"
+            app:layout_constraintHorizontal_bias="0.498"
+            android:backgroundTint="@color/accent" android:textStyle="bold" android:textColor="@color/black"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/editTextText"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_title" android:layout_marginTop="15dp"
+            android:hint="Username"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/editTextText2"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText"
+            app:layout_constraintHorizontal_bias="0.497" android:layout_marginTop="15dp" android:hint="Email"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/editTextText3"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+            app:layout_constraintHorizontal_bias="0.502" android:layout_marginTop="15dp" android:hint="Password"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/editTextText4"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText3"
+            app:layout_constraintHorizontal_bias="0.502" android:layout_marginTop="15dp"
+            android:hint="Retype Password"/>
+    <![CDATA[
+    >
+]]>
 </androidx.constraintlayout.widget.ConstraintLayout>

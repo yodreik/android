@@ -2,6 +2,8 @@ package com.example.yodreik;
 
 import android.os.Bundle;
 
+import android.view.View;
+import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -20,5 +22,9 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void createButtonOnClick(View view) {
+        Toast.makeText(getApplicationContext(), "Not Implemented", Toast.LENGTH_SHORT).show();
     }
 }

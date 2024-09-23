@@ -30,6 +30,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registerButtonOnClick(View view) {
-        Toast.makeText(getApplicationContext(), "Not Implemented", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
 }
