@@ -9,14 +9,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.yodreik.databinding.ActivityRegisterBinding;
+import com.example.yodreik.utils.Validator;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private ActivityRegisterBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
+        // setContentView(R.layout.activity_register);
+
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -25,6 +34,30 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createButtonOnClick(View view) {
+        String username = binding.inputUsername.getText().toString();
+        if (username.length() < 5 || username.length() > 32) {
+            Toast.makeText(getApplicationContext(), "Username must be between 5 and 32 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String email = binding.inputEmail.getText().toString();
+        if (!Validator.Email(email)) {
+            Toast.makeText(getApplicationContext(), "Email is incorrect", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String password = binding.inputPassword.getText().toString();
+        String passwordRepeat = binding.inputRetypePassword.getText().toString();
+        if (!password.equals(passwordRepeat)) {
+            Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (password.length() < 8 || password.length() > 50) {
+            Toast.makeText(getApplicationContext(), "Password must be between 8 and 50 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Toast.makeText(getApplicationContext(), "Not Implemented", Toast.LENGTH_SHORT).show();
     }
 }
