@@ -1,5 +1,6 @@
 package com.example.yodreik;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -59,5 +60,9 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         Toast.makeText(getApplicationContext(), "Not Implemented", Toast.LENGTH_SHORT).show();
+    }
+
+    public void backButtonOnClick(View view) {
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }
 }
