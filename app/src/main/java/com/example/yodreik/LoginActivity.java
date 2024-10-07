@@ -47,7 +47,15 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Not Implemented", Toast.LENGTH_SHORT).show();
+        try {
+            // TODO: Make login available by username or email
+            UserService.Login(email, password);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Can't login", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
     }
 
     public void backButtonOnClick(View view) {

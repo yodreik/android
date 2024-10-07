@@ -59,7 +59,14 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Not Implemented", Toast.LENGTH_SHORT).show();
+        try {
+            UserService.Create(email, password, username);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Can't register", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
     }
 
     public void backButtonOnClick(View view) {
