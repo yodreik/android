@@ -3,6 +3,7 @@ package com.example.yodreik;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.yodreik.databinding.ActivityLoginBinding;
 import com.example.yodreik.utils.Validator;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_login);
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -35,9 +36,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginButtonOnClick(View view) {
-        String email = binding.inputEmail.getText().toString();
-        if (!Validator.Email(email)) {
-            Toast.makeText(getApplicationContext(), "Email is incorrect", Toast.LENGTH_SHORT).show();
+        String login = binding.inputLogin.getText().toString();
+        if (login.length() < 5) {
+            Toast.makeText(getApplicationContext(), "Login is too short", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (login.length() > 254) {
+            Toast.makeText(getApplicationContext(), "Login is too long", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -48,10 +52,11 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         try {
-            // TODO: Make login available by username or email
-            UserService.Login(email, password);
+            Log.i("HUEMOE", "Username: " + login + ", password: " + password);
+            JSONObject user = UserService.Login(login, password);
+            Log.i("HUEMOE", "Logged in as @" + user.getString("username"));
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Can't login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Can't login: " + e.toString(), Toast.LENGTH_SHORT).show();
             return;
         }
 

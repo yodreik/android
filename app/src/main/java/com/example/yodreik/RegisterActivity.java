@@ -41,10 +41,11 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        String email = binding.inputEmail.getText().toString();
-        if (!Validator.Email(email)) {
-            Toast.makeText(getApplicationContext(), "Email is incorrect", Toast.LENGTH_SHORT).show();
-            return;
+        String login = binding.inputLogin.getText().toString();
+        if (login.length() < 5) {
+            Toast.makeText(getApplicationContext(), "Login is too short", Toast.LENGTH_SHORT).show();
+        } else if (login.length() > 254) {
+            Toast.makeText(getApplicationContext(), "Login is too long", Toast.LENGTH_SHORT).show();
         }
 
         String password = binding.inputPassword.getText().toString();
@@ -60,9 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         try {
-            UserService.Create(email, password, username);
+            UserService.Create(login, password, username);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Can't register", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Can't register: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
 
