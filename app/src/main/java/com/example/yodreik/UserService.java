@@ -135,21 +135,11 @@ public class UserService {
                 con.setRequestProperty("Content-Type", "application/json; utf-8");
                 con.setRequestProperty("Accept", "application/json");
                 con.setRequestProperty("Authorization", "Bearer " + accessToken);
-                con.setDoOutput(true);
-
-                JSONObject jsonInput = new JSONObject();
-
-                try (OutputStream os = con.getOutputStream()) {
-                    byte[] input = jsonInput.toString().getBytes("utf-8");
-                    os.write(input, 0, input.length);
-                    Log.i("DREIK", "Input: " + jsonInput.toString());
-                } catch (Exception e) {
-                    throw e;
-                }
 
                 int responseCode = con.getResponseCode();
 
                 Log.e("DREIK", "Status code: " + responseCode);
+                Log.e("DREIK", "Request method: " + con.getRequestMethod());
 
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
