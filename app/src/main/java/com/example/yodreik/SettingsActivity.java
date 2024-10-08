@@ -2,6 +2,7 @@ package com.example.yodreik;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONObject;
@@ -9,7 +10,11 @@ import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private boolean isLoggedIn = false;
+    private String username = "";
+
     private TextView usernameLabel;
+    private TextView loginStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         usernameLabel = findViewById(R.id.usernameLabel);
+        loginStatus = findViewById(R.id.loginStatus);
 
         SharedPreferences sharedPreferences = getSharedPreferences("dreik_prefs", MODE_PRIVATE);
         String accessToken = sharedPreferences.getString("access_token", null);
@@ -30,7 +36,11 @@ public class SettingsActivity extends AppCompatActivity {
             public void run() {
                 try {
                     JSONObject userJson = UserService.GetCurrentAccount(accessToken);
-                    String username = userJson.getString("username");
+
+                    isLoggedIn = true;
+                    loginStatus.setText("Logged In");
+
+                    username = userJson.getString("username");
 
                     runOnUiThread(new Runnable() {
                         @Override
@@ -39,11 +49,12 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                     });
                 } catch (Exception e) {
+                    Log.e("DREIK", "ERROR: " + e);
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(SettingsActivity.this, "Ошибка получения данных: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            loginStatus.setText("Not Logged In");
                         }
                     });
                 }
