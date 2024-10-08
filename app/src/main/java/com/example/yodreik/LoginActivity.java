@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             Log.i("HUEMOE", "Username: " + login + ", password: " + password);
             JSONObject user = UserService.Login(login, password);
-            Log.i("HUEMOE", "Logged in as @" + user.getString("username"));
+            Log.i("HUEMOE", "Logged in as @" + user.getString("token"));
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Can't login: " + e.toString(), Toast.LENGTH_SHORT).show();
             return;
