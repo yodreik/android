@@ -52,15 +52,17 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         try {
-            Log.i("HUEMOE", "Username: " + login + ", password: " + password);
-            JSONObject user = UserService.Login(login, password);
-            Log.i("HUEMOE", "Logged in as @" + user.getString("token"));
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Can't login: " + e.toString(), Toast.LENGTH_SHORT).show();
-            return;
-        }
+            JSONObject token = UserService.Login(login, password);
 
-        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+            String accessToken = token.getString("token");
+
+            JSONObject user = UserService.GetCurrentAccount(accessToken);
+
+            Toast.makeText(getApplicationContext(), "Logged in as " + user.getString("username"), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("DREIK", "ERROR: " + e);
+            Toast.makeText(getApplicationContext(), "Can't login: " + e, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void backButtonOnClick(View view) {

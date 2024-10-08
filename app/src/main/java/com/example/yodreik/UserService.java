@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.*;
 
+import android.net.http.HttpEngine;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -108,6 +109,60 @@ public class UserService {
                     return new JSONObject(response.toString());
                 } else {
                     throw new Exception("Failed to login, status: " + responseCode);
+                }
+            }
+        });
+
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new Exception("Error during network operation: " + e.getMessage(), e);
+        } finally {
+            executor.shutdown();
+        }
+    }
+
+    public static JSONObject GetCurrentAccount(String accessToken) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<JSONObject> future = executor.submit(new Callable<JSONObject>() {
+            @Override
+            public JSONObject call() throws Exception {
+                String url = BASEPATH + "/auth/account";
+                URL obj = new URL(url);
+                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+                con.setRequestMethod("GET");
+                con.setRequestProperty("Content-Type", "application/json; utf-8");
+                con.setRequestProperty("Accept", "application/json");
+                con.setRequestProperty("Authorization", "Bearer " + accessToken);
+                con.setDoOutput(true);
+
+                JSONObject jsonInput = new JSONObject();
+
+                try (OutputStream os = con.getOutputStream()) {
+                    byte[] input = jsonInput.toString().getBytes("utf-8");
+                    os.write(input, 0, input.length);
+                    Log.i("DREIK", "Input: " + jsonInput.toString());
+                } catch (Exception e) {
+                    throw e;
+                }
+
+                int responseCode = con.getResponseCode();
+
+                Log.e("DREIK", "Status code: " + responseCode);
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+
+                    return new JSONObject(response.toString());
+                } else {
+                    throw new Exception("Failed to get current account, status: " + responseCode);
                 }
             }
         });
