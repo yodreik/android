@@ -7,7 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.*;
 
-import android.net.http.HttpEngine;
 import android.util.Log;
 
 import org.json.JSONObject;

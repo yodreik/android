@@ -11,7 +11,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.yodreik.databinding.ActivityRegisterBinding;
-import com.example.yodreik.utils.Validator;
 
 public class RegisterActivity extends AppCompatActivity {
 
