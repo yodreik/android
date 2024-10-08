@@ -32,4 +32,8 @@ public class MainActivity extends AppCompatActivity {
     public void registerButtonOnClick(View view) {
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
+
+    public void settingsButtonOnClick(View view) {
+        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+    }
 }
