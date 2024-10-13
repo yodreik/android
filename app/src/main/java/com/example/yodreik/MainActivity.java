@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        if (Preference.HasAccessToken(getApplicationContext())) {
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+        }
     }
 
     public void loginButtonOnClick(View view) {
