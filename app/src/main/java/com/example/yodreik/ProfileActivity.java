@@ -15,6 +15,8 @@ import com.bumptech.glide.request.RequestOptions;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private String TAG = "ProfileActivity";
+
     private String username = "";
     private String displayName = "";
     private String avatarURL = "";
@@ -51,14 +53,16 @@ public class ProfileActivity extends AppCompatActivity {
 
         ImageView userAvatar = findViewById(R.id.user_avatar);
 
+        Log.i(TAG, "Avatar URL:" + avatarURL);
+
         Glide.with(this)
                 .load(avatarURL)
                 .apply(new RequestOptions().circleCrop().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE))
                 .into(userAvatar);
     }
 
-    private void getCurrentAccount(String accessToken) {
-        new Thread(new Runnable() {
+    private void getCurrentAccount(final String accessToken) {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -79,6 +83,15 @@ public class ProfileActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
             }
-        }).start();
+        });
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
+
 }
