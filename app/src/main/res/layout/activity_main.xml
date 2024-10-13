@@ -30,11 +30,11 @@
             app:layout_constraintEnd_toEndOf="parent" android:onClick="registerButtonOnClick"
             android:backgroundTint="@color/accent" android:textStyle="bold" android:textColor="@color/black"/>
     <Button
-            android:text="Settings"
+            android:text="Profile"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/settings_button"
+            android:layout_height="wrap_content" android:id="@+id/profile_button"
             app:layout_constraintTop_toBottomOf="@+id/login_button" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:onClick="settingsButtonOnClick"
+            app:layout_constraintEnd_toEndOf="parent" android:onClick="profileButtonOnClick"
             android:backgroundTint="@color/accent" android:textStyle="bold" android:textColor="@color/black"
             android:layout_marginTop="56dp"/>
 

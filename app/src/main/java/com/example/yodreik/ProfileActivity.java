@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -94,4 +95,8 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    public void logoutButtonOnClick(View view) {
+        Preference.ClearAccessToken(getApplicationContext());
+        startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+    }
 }
