@@ -28,15 +28,16 @@ public class ProfileActivity extends AppCompatActivity {
         usernameLabel = findViewById(R.id.usernameLabel);
         displayNameLabel = findViewById(R.id.displayNameLabel);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("dreik_prefs", MODE_PRIVATE);
-        String accessToken = sharedPreferences.getString("access_token", null);
+        if (!Preference.HasAccessToken(getApplicationContext())) {
+            return;
+        }
 
-        getCurrentAccount(accessToken);
+        String token = Preference.GetAccessToken(getApplicationContext());
+
+        getCurrentAccount(token);
 
         ImageView userAvatar = findViewById(R.id.user_avatar);
 
-        // Example URL from server
-        // Load the avatar into ImageView using Glide
         Glide.with(this)
                 .load(avatarURL)
                 .apply(new RequestOptions().circleCrop().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE))

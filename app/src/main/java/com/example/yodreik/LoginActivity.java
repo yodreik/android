@@ -1,7 +1,6 @@
 package com.example.yodreik;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -56,10 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
             String accessToken = token.getString("token");
 
-            SharedPreferences sharedPreferences = getSharedPreferences("dreik_prefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("access_token", accessToken);
-            editor.apply();
+            Preference.SaveAccessToken(getApplicationContext(), accessToken);
 
             JSONObject user = UserService.GetCurrentAccount(accessToken);
 
