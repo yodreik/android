@@ -1,8 +1,10 @@
 package com.example.yodreik;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.json.JSONObject;
@@ -29,12 +31,23 @@ public class ProfileActivity extends AppCompatActivity {
         displayNameLabel = findViewById(R.id.displayNameLabel);
 
         if (!Preference.HasAccessToken(getApplicationContext())) {
+            Toast.makeText(getApplicationContext(), "Please, log in first", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
             return;
         }
 
         String token = Preference.GetAccessToken(getApplicationContext());
 
-        getCurrentAccount(token);
+        try {
+            getCurrentAccount(token);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Please, log in first", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+
+            Log.e("DREIK", "ERROR: " + e);
+            e.printStackTrace();
+            return;
+        }
 
         ImageView userAvatar = findViewById(R.id.user_avatar);
 
@@ -63,14 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     });
                 } catch (Exception e) {
-                    Log.e("DREIK", "ERROR: " + e);
-                    e.printStackTrace();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-//                            loginStatus.setText("Not Logged In");
-                        }
-                    });
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
