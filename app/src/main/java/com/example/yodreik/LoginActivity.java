@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Logged in as " + user.getString("username"), Toast.LENGTH_SHORT).show();
 
-            startActivity(new Intent(LoginActivity.this, SettingsActivity.class));
+            startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
         } catch (Exception e) {
             Log.e("DREIK", "ERROR: " + e);
             Toast.makeText(getApplicationContext(), "Can't login: " + e, Toast.LENGTH_SHORT).show();

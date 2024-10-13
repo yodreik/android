@@ -13,7 +13,8 @@ import org.json.JSONObject;
 
 public class UserService {
 
-    private static final String BASEPATH = "http://165.232.85.209:6969/api";
+//    private static final String BASEPATH = "http://165.232.85.209:6969/api";
+    private static final String BASEPATH = "https://dreik.d.qarwe.online/api";
     private static final String TAG = "UserService";
 
     public static JSONObject Create(String email, String password, String username) throws Exception {
