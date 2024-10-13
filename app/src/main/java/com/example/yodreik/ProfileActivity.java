@@ -2,10 +2,13 @@ package com.example.yodreik;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.json.JSONObject;
@@ -29,6 +32,12 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
+        Window window = getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.accent));
+//        window.setStatusBarColor(Color.TRANSPARENT);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         usernameLabel = findViewById(R.id.usernameLabel);
         displayNameLabel = findViewById(R.id.displayNameLabel);
@@ -97,6 +106,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void logoutButtonOnClick(View view) {
         Preference.ClearAccessToken(getApplicationContext());
+        startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+    }
+
+    public void backButtonOnClick(View view) {
         startActivity(new Intent(ProfileActivity.this, MainActivity.class));
     }
 }
