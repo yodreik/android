@@ -87,6 +87,14 @@ public class ProfileFragment extends Fragment {
                     displayName = userJson.getString("display_name");
                     avatarURL = userJson.getString("avatar_url");
 
+                    if (displayName.isEmpty()) {
+                        displayName = username;
+                    }
+
+                    if (avatarURL.isEmpty()) {
+                        avatarURL = "https://t3.ftcdn.net/jpg/09/70/98/46/360_F_970984614_DyP7gQmyTUgQdq8fnRP26H0cZ9dnPDv8.jpg";
+                    }
+
                     requireActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
