@@ -67,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 
     public void backButtonOnClick(View view) {
