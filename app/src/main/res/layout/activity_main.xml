@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="yodreik - Fitness Duck"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/login_button"/>
-    <Button
-            android:text="Log In"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/login_button"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="100dp"
-            android:onClick="loginButtonOnClick" android:backgroundTint="@color/accent" android:textStyle="bold"
-            android:textColor="@color/black"/>
-    <Button
-            android:text="Register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/register_button"
-            app:layout_constraintTop_toBottomOf="@+id/login_button" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:onClick="registerButtonOnClick"
-            android:backgroundTint="@color/accent" android:textStyle="bold" android:textColor="@color/black"/>
-    <Button
-            android:text="Profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/profile_button"
-            app:layout_constraintTop_toBottomOf="@+id/login_button" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:onClick="profileButtonOnClick"
-            android:backgroundTint="@color/accent" android:textStyle="bold" android:textColor="@color/black"
-            android:layout_marginTop="56dp"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/main"
+                tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottomNav"
+    />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:addStatesFromChildren="false"
+            android:scrollIndicators="left"
+            android:elevation="10dp"
+            app:itemIconSize="30dp"
+            app:itemIconTint="@color/accent"
+            app:itemTextColor="@color/accent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/nav_menu"/>
+</RelativeLayout>

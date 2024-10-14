@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Logged in as " + user.getString("username"), Toast.LENGTH_SHORT).show();
 
-            startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         } catch (Exception e) {
             Log.e("DREIK", "ERROR: " + e);
             Toast.makeText(getApplicationContext(), "Can't login: " + e, Toast.LENGTH_SHORT).show();
@@ -69,6 +69,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void backButtonOnClick(View view) {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
 }

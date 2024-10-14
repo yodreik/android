@@ -70,6 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void backButtonOnClick(View view) {
-        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 }

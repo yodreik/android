@@ -1,37 +1,48 @@
 package com.example.yodreik;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
-import android.view.View;
-import androidx.activity.EdgeToEdge;
+import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNav;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        if (!Preference.HasAccessToken(getApplicationContext())) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            return;
+        }
+
+        loadFragment(new HomeFragment());
+
+        bottomNav = findViewById(R.id.bottomNav);
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.home) {
+                loadFragment(new HomeFragment());
+                return true;
+            } else if (item.getItemId() == R.id.profile) {
+                loadFragment(new ProfileFragment());
+                return true;
+            }
+            return false;
         });
     }
 
-    public void loginButtonOnClick(View view) {
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-    }
-
-    public void registerButtonOnClick(View view) {
-        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-    }
-
-    public void profileButtonOnClick(View view) {
-        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 }
