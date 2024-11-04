@@ -1,6 +1,8 @@
 package com.example.yodreik;
 
 import android.app.Dialog;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import androidx.fragment.app.DialogFragment;
 import android.app.AlertDialog;
@@ -9,6 +11,9 @@ import android.view.View;
 import android.widget.EditText;
 import com.example.yodreik.utils.Validator;
 import com.example.yodreik.utils.Toast;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CreateWorkoutFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -53,6 +58,13 @@ public class CreateWorkoutFragment extends DialogFragment {
                     // cancel
                     CreateWorkoutFragment.this.getDialog().cancel();
                 });
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String currentDate = dateFormat.format(calendar.getTime());
+
+        EditText editWorkoutDate = dialogView.findViewById(R.id.edit_workout_date);
+        editWorkoutDate.setText(currentDate);
 
         return builder.create();
     }
