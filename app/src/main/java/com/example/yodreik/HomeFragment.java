@@ -10,16 +10,13 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        view.findViewById(R.id.createWorkoutButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onCreateWorkoutButtonClick(v);
-            }
-        });
+        view.findViewById(R.id.createWorkoutButton).setOnClickListener(this::onCreateWorkoutButtonClick);
 
         return view;
     }
 
-    public void onCreateWorkoutButtonClick(View view) {}
+    public void onCreateWorkoutButtonClick(View view) {
+        CreateWorkoutFragment dialog = new CreateWorkoutFragment();
+        dialog.show(getChildFragmentManager(), "CREATE_WORKOUT");
+    }
 }

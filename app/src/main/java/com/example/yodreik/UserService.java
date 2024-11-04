@@ -11,6 +11,8 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 public class UserService {
 
 //    private static final String BASEPATH = "http://165.232.85.209:6969/api";
@@ -153,6 +155,60 @@ public class UserService {
                     return new JSONObject(response.toString());
                 } else {
                     throw new Exception("Failed to get current account, status: " + responseCode);
+                }
+            }
+        });
+
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new Exception("Error during network operation: " + e.getMessage(), e);
+        } finally {
+            executor.shutdown();
+        }
+    }
+
+    public static JSONObject CreateWorkout(String date, String duration, String kind, String accessToken) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<JSONObject> future = executor.submit(new Callable<JSONObject>() {
+            @Override
+            public JSONObject call() throws Exception {
+                String url = BASEPATH + "/workout";
+                URL obj = new URL(url);
+                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type", "application/json; utf-8");
+                con.setRequestProperty("Accept", "application/json");
+                con.setRequestProperty("Authorization", "Bearer " + accessToken);
+                con.setDoOutput(true);
+
+                JSONObject jsonInput = new JSONObject();
+                jsonInput.put("date", date);
+                jsonInput.put("duration", Integer.parseInt(duration));
+                jsonInput.put("kind", kind);
+
+                try (OutputStream os = con.getOutputStream()) {
+                    byte[] input = jsonInput.toString().getBytes("utf-8");
+                    os.write(input, 0, input.length);
+                } catch (Exception e) {
+                    throw e;
+                }
+
+                int responseCode = con.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_CREATED) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+
+                    return new JSONObject(response.toString());
+                } else {
+                    throw new Exception("Failed to create workout, status: " + responseCode);
                 }
             }
         });
