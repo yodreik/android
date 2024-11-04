@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import com.example.yodreik.utils.Validator;
 
 public class CreateWorkoutFragment extends DialogFragment {
 
@@ -29,8 +30,18 @@ public class CreateWorkoutFragment extends DialogFragment {
                     EditText editWorkoutDate = dialogView.findViewById(R.id.edit_workout_date);
                     String date = editWorkoutDate.getText().toString();
 
+                    if (!Validator.Date(date)) {
+                        Toast.makeText(getContext(), "Invalid date format!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     EditText editWorkoutDuration = dialogView.findViewById(R.id.edit_workout_duration);
                     String duration = editWorkoutDuration.getText().toString();
+
+                    if (!Validator.Duration(duration)) {
+                        Toast.makeText(getContext(), "Invalid duration!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     EditText editWorkoutKind = dialogView.findViewById(R.id.edit_workout_kind);
                     String kind = editWorkoutKind.getText().toString();
@@ -43,8 +54,6 @@ public class CreateWorkoutFragment extends DialogFragment {
                     } catch (Exception e) {
                         Toast.makeText(getContext(), "Can't create workout: " + e, Toast.LENGTH_SHORT).show();
                     }
-
-                    Log.i("FORM", "date: " + date + " duration: " + duration + " kind: " + kind);
                 })
                 .setNegativeButton("Cancel", (dialog, id) -> {
                     // cancel
