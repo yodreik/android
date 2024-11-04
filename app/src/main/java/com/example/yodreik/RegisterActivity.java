@@ -2,7 +2,6 @@ package com.example.yodreik;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import com.example.yodreik.utils.Toast;
 import androidx.activity.EdgeToEdge;

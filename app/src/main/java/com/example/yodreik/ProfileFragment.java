@@ -1,8 +1,6 @@
 package com.example.yodreik;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -117,6 +115,7 @@ public class ProfileFragment extends Fragment {
 
     public void logoutButtonOnClick(View view) {
         Preference.ClearAccessToken(requireContext());
+        Toast.Success(getContext(), "Logged out");
         startActivity(new Intent(getActivity(), MainActivity.class));
     }
 }

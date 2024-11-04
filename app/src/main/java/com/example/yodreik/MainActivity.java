@@ -3,8 +3,6 @@ package com.example.yodreik;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

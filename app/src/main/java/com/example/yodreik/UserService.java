@@ -6,12 +6,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.*;
-
 import android.util.Log;
-
 import org.json.JSONObject;
-
-import static androidx.core.content.ContentProviderCompat.requireContext;
 
 public class UserService {
 
