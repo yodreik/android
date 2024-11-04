@@ -127,7 +127,7 @@ public class UserService {
         Future<JSONObject> future = executor.submit(new Callable<JSONObject>() {
             @Override
             public JSONObject call() throws Exception {
-                String url = BASEPATH + "/auth/account";
+                String url = BASEPATH + "/account";
                 URL obj = new URL(url);
                 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
