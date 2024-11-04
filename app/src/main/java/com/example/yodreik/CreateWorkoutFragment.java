@@ -30,7 +30,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                     String date = editWorkoutDate.getText().toString();
 
                     if (!Validator.Date(date)) {
-                        Toast.Info(getContext(), "Invalid date format");
+                        Toast.Error(getContext(), "Invalid date format");
                         return;
                     }
 
@@ -38,7 +38,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                     String duration = editWorkoutDuration.getText().toString();
 
                     if (!Validator.Duration(duration)) {
-                        Toast.Info(getContext(), "Invalid duration");
+                        Toast.Error(getContext(), "Invalid duration");
                         return;
                     }
 

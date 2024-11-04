@@ -37,16 +37,16 @@ public class LoginActivity extends AppCompatActivity {
     public void loginButtonOnClick(View view) {
         String login = binding.inputLogin.getText().toString();
         if (login.length() < 5) {
-            Toast.Info(getApplicationContext(), "Login is too short");
+            Toast.Error(getApplicationContext(), "Login is too short");
             return;
         } else if (login.length() > 254) {
-            Toast.Info(getApplicationContext(), "Login is too long");
+            Toast.Error(getApplicationContext(), "Login is too long");
             return;
         }
 
         String password = binding.inputPassword.getText().toString();
         if (password.length() < 8 || password.length() > 50) {
-            Toast.Info(getApplicationContext(), "Password must be between 8 and 50 characters");
+            Toast.Error(getApplicationContext(), "Password must be between 8 and 50 characters");
             return;
         }
 
@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
 
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         } catch (Exception e) {
-            Log.e("DREIK", "ERROR: " + e);
             Toast.Error(getApplicationContext(), "Something went wrong");
         }
     }

@@ -54,7 +54,6 @@ public class ProfileFragment extends Fragment {
         } catch (Exception e) {
             Toast.Info(getContext(), "Please, log in first");
             startActivity(new Intent(getActivity(), LoginActivity.class));
-            Log.e("DREIK", "ERROR: " + e);
             e.printStackTrace();
         }
 
