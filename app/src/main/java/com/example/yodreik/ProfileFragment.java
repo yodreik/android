@@ -65,7 +65,6 @@ public class ProfileFragment extends Fragment {
                 .apply(new RequestOptions().circleCrop().skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE))
                 .into(userAvatar);
 
-        // Handle button clicks
         view.findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
