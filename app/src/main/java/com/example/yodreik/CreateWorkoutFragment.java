@@ -2,8 +2,6 @@ package com.example.yodreik;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import android.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -13,10 +11,7 @@ import com.example.yodreik.utils.Validator;
 import com.example.yodreik.utils.Toast;
 
 public class CreateWorkoutFragment extends DialogFragment {
-
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();

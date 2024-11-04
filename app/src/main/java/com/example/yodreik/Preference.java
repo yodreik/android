@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Preference {
+
     private static final String SHARED_PREFS_NAME = "dreik_preferences";
     private static final String AUTH_TOKEN_KEY = "access_token";
 

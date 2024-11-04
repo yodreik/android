@@ -84,7 +84,7 @@ public class ProfileFragment extends Fragment {
                     avatarURL = userJson.getString("avatar_url");
 
                     if (displayName.isEmpty()) {
-                        displayName = username;
+                        displayName = "@" + username;
                     }
 
                     if (avatarURL.isEmpty()) {
