@@ -12,9 +12,6 @@ import android.widget.EditText;
 import com.example.yodreik.utils.Validator;
 import com.example.yodreik.utils.Toast;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class CreateWorkoutFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
