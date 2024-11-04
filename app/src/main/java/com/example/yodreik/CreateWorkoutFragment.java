@@ -2,8 +2,6 @@ package com.example.yodreik;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -12,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import com.example.yodreik.utils.Validator;
+import com.example.yodreik.utils.Toast;
 
 public class CreateWorkoutFragment extends DialogFragment {
 
@@ -31,7 +30,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                     String date = editWorkoutDate.getText().toString();
 
                     if (!Validator.Date(date)) {
-                        Toast.makeText(getContext(), "Invalid date format!", Toast.LENGTH_SHORT).show();
+                        Toast.Info(getContext(), "Invalid date format");
                         return;
                     }
 
@@ -39,7 +38,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                     String duration = editWorkoutDuration.getText().toString();
 
                     if (!Validator.Duration(duration)) {
-                        Toast.makeText(getContext(), "Invalid duration!", Toast.LENGTH_SHORT).show();
+                        Toast.Info(getContext(), "Invalid duration");
                         return;
                     }
 
@@ -50,9 +49,9 @@ public class CreateWorkoutFragment extends DialogFragment {
 
                     try {
                         UserService.CreateWorkout(date, duration, kind, accessToken);
-                        Toast.makeText(getContext(), "Workout created successfully", Toast.LENGTH_SHORT).show();
+                        Toast.Success(getContext(), "Workout created successfully");
                     } catch (Exception e) {
-                        Toast.makeText(getContext(), "Can't create workout: " + e, Toast.LENGTH_SHORT).show();
+                        Toast.Error(getContext(), "Something went wrong");
                     }
                 })
                 .setNegativeButton("Cancel", (dialog, id) -> {

@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import com.example.yodreik.utils.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -37,16 +37,16 @@ public class LoginActivity extends AppCompatActivity {
     public void loginButtonOnClick(View view) {
         String login = binding.inputLogin.getText().toString();
         if (login.length() < 5) {
-            Toast.makeText(getApplicationContext(), "Login is too short", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Login is too short");
             return;
         } else if (login.length() > 254) {
-            Toast.makeText(getApplicationContext(), "Login is too long", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Login is too long");
             return;
         }
 
         String password = binding.inputPassword.getText().toString();
         if (password.length() < 8 || password.length() > 50) {
-            Toast.makeText(getApplicationContext(), "Password must be between 8 and 50 characters", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Password must be between 8 and 50 characters");
             return;
         }
 
@@ -59,12 +59,12 @@ public class LoginActivity extends AppCompatActivity {
 
             JSONObject user = UserService.GetCurrentAccount(accessToken);
 
-            Toast.makeText(getApplicationContext(), "Logged in as " + user.getString("username"), Toast.LENGTH_SHORT).show();
+            Toast.Success(getApplicationContext(), "Logged in as @" + user.getString("username"));
 
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         } catch (Exception e) {
             Log.e("DREIK", "ERROR: " + e);
-            Toast.makeText(getApplicationContext(), "Can't login: " + e, Toast.LENGTH_SHORT).show();
+            Toast.Error(getApplicationContext(), "Something went wrong");
         }
     }
 

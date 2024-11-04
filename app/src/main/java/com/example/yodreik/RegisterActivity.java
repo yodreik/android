@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
-import android.widget.Toast;
+import com.example.yodreik.utils.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        // setContentView(R.layout.activity_register);
 
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -36,37 +35,37 @@ public class RegisterActivity extends AppCompatActivity {
     public void createButtonOnClick(View view) {
         String username = binding.inputUsername.getText().toString();
         if (username.length() < 5 || username.length() > 32) {
-            Toast.makeText(getApplicationContext(), "Username must be between 5 and 32 characters", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Username must be between 5 and 32 characters");
             return;
         }
 
         String login = binding.inputLogin.getText().toString();
         if (login.length() < 5) {
-            Toast.makeText(getApplicationContext(), "Login is too short", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Login is too short");
         } else if (login.length() > 254) {
-            Toast.makeText(getApplicationContext(), "Login is too long", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Login is too long");
         }
 
         String password = binding.inputPassword.getText().toString();
         String passwordRepeat = binding.inputRetypePassword.getText().toString();
         if (!password.equals(passwordRepeat)) {
-            Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Passwords do not match");
             return;
         }
 
         if (password.length() < 8 || password.length() > 50) {
-            Toast.makeText(getApplicationContext(), "Password must be between 8 and 50 characters", Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Password must be between 8 and 50 characters");
             return;
         }
 
         try {
             UserService.Create(login, password, username);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Can't register: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.Info(getApplicationContext(), "Something went wrong");
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+        Toast.Info(getApplicationContext(), "Registered successfully. Check your email to verify");
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 

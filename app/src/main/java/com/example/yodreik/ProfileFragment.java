@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import com.example.yodreik.utils.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
 
         // Check for access token
         if (!Preference.HasAccessToken(requireContext())) {
-            Toast.makeText(getContext(), "Please, log in first", Toast.LENGTH_SHORT).show();
+            Toast.Info(getContext(), "Please, log in first");
             startActivity(new Intent(getActivity(), LoginActivity.class));
             return view;
         }
@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
         try {
             getCurrentAccount(token);
         } catch (Exception e) {
-            Toast.makeText(getContext(), "Please, log in first", Toast.LENGTH_SHORT).show();
+            Toast.Info(getContext(), "Please, log in first");
             startActivity(new Intent(getActivity(), LoginActivity.class));
             Log.e("DREIK", "ERROR: " + e);
             e.printStackTrace();
