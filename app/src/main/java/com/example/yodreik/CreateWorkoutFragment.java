@@ -27,7 +27,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                     String date = editWorkoutDate.getText().toString();
 
                     if (!Validator.Date(date)) {
-                        Toast.Error(getContext(), "Invalid date format");
+                        Toast.Error(getContext(), getString(R.string.toast_invalid_date_format));
                         return;
                     }
 
@@ -35,7 +35,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                     String duration = editWorkoutDuration.getText().toString();
 
                     if (!Validator.Duration(duration)) {
-                        Toast.Error(getContext(), "Invalid duration");
+                        Toast.Error(getContext(), getString(R.string.toast_invalid_duration));
                         return;
                     }
 
@@ -46,9 +46,9 @@ public class CreateWorkoutFragment extends DialogFragment {
 
                     try {
                         UserService.CreateWorkout(date, duration, kind, accessToken);
-                        Toast.Success(getContext(), "Workout created successfully");
+                        Toast.Success(getContext(), getString(R.string.toast_workout_created_success));
                     } catch (Exception e) {
-                        Toast.Error(getContext(), "Something went wrong");
+                        Toast.Error(getContext(), getString(R.string.toast_something_went_wrong));
                     }
                 })
                 .setNegativeButton("Cancel", (dialog, id) -> {

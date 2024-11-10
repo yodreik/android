@@ -40,7 +40,7 @@ public class ProfileFragment extends Fragment {
 
         // Check for access token
         if (!Preference.HasAccessToken(requireContext())) {
-            Toast.Info(getContext(), "Please, log in first");
+            Toast.Info(getContext(), getString(R.string.toast_log_in_first));
             startActivity(new Intent(getActivity(), LoginActivity.class));
             return view;
         }
@@ -50,7 +50,7 @@ public class ProfileFragment extends Fragment {
         try {
             getCurrentAccount(token);
         } catch (Exception e) {
-            Toast.Info(getContext(), "Please, log in first");
+            Toast.Info(getContext(), getString(R.string.toast_log_in_first));
             startActivity(new Intent(getActivity(), LoginActivity.class));
             e.printStackTrace();
         }
@@ -115,7 +115,7 @@ public class ProfileFragment extends Fragment {
 
     public void logoutButtonOnClick(View view) {
         Preference.ClearAccessToken(requireContext());
-        Toast.Success(getContext(), "Logged out");
+        Toast.Success(getContext(), getString(R.string.toast_logged_out));
         startActivity(new Intent(getActivity(), MainActivity.class));
     }
 }

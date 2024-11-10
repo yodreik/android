@@ -34,16 +34,16 @@ public class LoginActivity extends AppCompatActivity {
     public void loginButtonOnClick(View view) {
         String login = binding.inputLogin.getText().toString();
         if (login.length() < 5) {
-            Toast.Error(getApplicationContext(), "Login is too short");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_login_too_short));
             return;
         } else if (login.length() > 254) {
-            Toast.Error(getApplicationContext(), "Login is too long");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_login_too_long));
             return;
         }
 
         String password = binding.inputPassword.getText().toString();
         if (password.length() < 8 || password.length() > 50) {
-            Toast.Error(getApplicationContext(), "Password must be between 8 and 50 characters");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_password_length_incorrect));
             return;
         }
 
@@ -56,11 +56,11 @@ public class LoginActivity extends AppCompatActivity {
 
             JSONObject user = UserService.GetCurrentAccount(accessToken);
 
-            Toast.Success(getApplicationContext(), "Logged in as @" + user.getString("username"));
+            Toast.Success(getApplicationContext(), getString(R.string.toast_logged_id_as) + user.getString("username"));
 
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         } catch (Exception e) {
-            Toast.Error(getApplicationContext(), "Something went wrong");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_something_went_wrong));
         }
     }
 

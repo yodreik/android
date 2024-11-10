@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">yodreik</string>
+
+    <!-- Menu -->
+    <string name="menu_element_home">Главная</string>
+    <string name="menu_element_profile">Профиль</string>
+
+    <!-- Login -->
+    <string name="title_login">Вход</string>
+    <string name="login_input_login">Логин</string>
+    <string name="login_input_password">Пароль</string>
+    <string name="button_login">Войти</string>
+
+    <!-- Register -->
+    <string name="title_register">Создать аккаунт</string>
+    <string name="register_input_username">Имя пользователя</string>
+    <string name="register_input_email">Почта</string>
+    <string name="register_input_password">Пароль</string>
+    <string name="register_input_retype_password">Подтвердить пароль</string>
+    <string name="button_register">Создать</string>
+
+    <!-- Create workout -->
+    <string name="create_workout_input_date">Дата</string>
+    <string name="create_workout_input_duration">Длительность</string>
+    <string name="create_workout_input_kind">Тип</string>
+
+    <!-- Home -->
+    <string name="home_button_create_workout">Создать тренировку</string>
+
+    <!-- Toasts -->
+    <string name="toast_invalid_date_format">Неправильный формат даты</string>
+    <string name="toast_invalid_duration">Неправильный формат длительности</string>
+    <string name="toast_workout_created_success">Тренировка успешно создана</string>
+    <string name="toast_something_went_wrong">Что-то пошло не так</string>
+
+    <string name="toast_login_too_short">Логин слишком короткий</string>
+    <string name="toast_login_too_long">Логин слишком длинный</string>
+    <string name="toast_password_length_incorrect">Пароль должен быть между 8 и 50 символами</string>
+    <string name="toast_logged_id_as">Вы вошли как @</string>
+
+    <string name="toast_log_in_first">Сначала войти в аккаунт</string>
+    <string name="toast_logged_out">Вы вышли из аккаунта</string>
+
+    <string name="toast_username_length_incorrect">Имя пользователя должно быть между 5 и 32 символами</string>
+    <string name="toast_passwords_dont_match">Пароли не совпадают</string>
+    <string name="toast_registered_success">Вы успешно зарегистрировались. Подтвердите аккаунт по почте</string>
+
+</resources>

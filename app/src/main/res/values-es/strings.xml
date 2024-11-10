@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">yodreik</string>
+
+    <!-- Menu -->
+    <string name="menu_element_home">Inicio</string>
+    <string name="menu_element_profile">Perfil</string>
+
+    <!-- Login -->
+    <string name="title_login">Iniciar sesión</string>
+    <string name="login_input_login">Usuario</string>
+    <string name="login_input_password">Contraseña</string>
+    <string name="button_login">Iniciar sesión</string>
+
+    <!-- Register -->
+    <string name="title_register">Crear una cuenta</string>
+    <string name="register_input_username">Nombre de usuario</string>
+    <string name="register_input_email">Correo electrónico</string>
+    <string name="register_input_password">Contraseña</string>
+    <string name="register_input_retype_password">Confirmar contraseña</string>
+    <string name="button_register">Crear</string>
+
+    <!-- Create workout -->
+    <string name="create_workout_input_date">Fecha</string>
+    <string name="create_workout_input_duration">Duración</string>
+    <string name="create_workout_input_kind">Tipo</string>
+
+    <!-- Home -->
+    <string name="home_button_create_workout">Crear entrenamiento</string>
+
+    <!-- Toasts -->
+    <string name="toast_invalid_date_format">Formato de fecha no válido</string>
+    <string name="toast_invalid_duration">Duración no válida</string>
+    <string name="toast_workout_created_success">Entrenamiento creado con éxito</string>
+    <string name="toast_something_went_wrong">Algo salió mal</string>
+
+    <string name="toast_login_too_short">El usuario es demasiado corto</string>
+    <string name="toast_login_too_long">El usuario es demasiado largo</string>
+    <string name="toast_password_length_incorrect">La contraseña debe tener entre 8 y 50 caracteres</string>
+    <string name="toast_logged_id_as">Conectado como @</string>
+
+    <string name="toast_log_in_first">Por favor, inicia sesión primero</string>
+    <string name="toast_logged_out">Sesión cerrada</string>
+
+    <string name="toast_username_length_incorrect">El nombre de usuario debe tener entre 5 y 32 caracteres</string>
+    <string name="toast_passwords_dont_match">Las contraseñas no coinciden</string>
+    <string name="toast_registered_success">Registrado con éxito. Verifica tu correo electrónico</string>
+
+</resources>

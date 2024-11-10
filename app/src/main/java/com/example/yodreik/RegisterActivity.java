@@ -34,37 +34,37 @@ public class RegisterActivity extends AppCompatActivity {
     public void createButtonOnClick(View view) {
         String username = binding.inputUsername.getText().toString();
         if (username.length() < 5 || username.length() > 32) {
-            Toast.Error(getApplicationContext(), "Username must be between 5 and 32 characters");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_username_length_incorrect));
             return;
         }
 
         String login = binding.inputLogin.getText().toString();
         if (login.length() < 5) {
-            Toast.Error(getApplicationContext(), "Login is too short");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_login_too_short));
         } else if (login.length() > 254) {
-            Toast.Error(getApplicationContext(), "Login is too long");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_login_too_long));
         }
 
         String password = binding.inputPassword.getText().toString();
         String passwordRepeat = binding.inputRetypePassword.getText().toString();
         if (!password.equals(passwordRepeat)) {
-            Toast.Error(getApplicationContext(), "Passwords do not match");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_passwords_dont_match));
             return;
         }
 
         if (password.length() < 8 || password.length() > 50) {
-            Toast.Error(getApplicationContext(), "Password must be between 8 and 50 characters");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_password_length_incorrect));
             return;
         }
 
         try {
             UserService.Create(login, password, username);
         } catch (Exception e) {
-            Toast.Error(getApplicationContext(), "Something went wrong");
+            Toast.Error(getApplicationContext(), getString(R.string.toast_something_went_wrong));
             return;
         }
 
-        Toast.Success(getApplicationContext(), "Registered successfully. Check your email to verify");
+        Toast.Success(getApplicationContext(), getString(R.string.toast_registered_success));
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 
