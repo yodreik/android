@@ -22,11 +22,16 @@ public class ProfileFragment extends Fragment {
     private String TAG = "ProfileFragment";
 
     private String username = "";
+    private int minutesSpent = 0;
+    private int longestActivity = 0;
     private String displayName = "";
     private String avatarURL = "";
 
     private TextView usernameLabel;
     private TextView displayNameLabel;
+
+    private TextView minutesSpentLabel;
+    private TextView longestActivityLabel;
 
     @Nullable
     @Override
@@ -36,6 +41,8 @@ public class ProfileFragment extends Fragment {
         // Initialize UI elements
         usernameLabel = view.findViewById(R.id.usernameLabel);
         displayNameLabel = view.findViewById(R.id.displayNameLabel);
+        minutesSpentLabel = view.findViewById(R.id.timeSpentValue);
+        longestActivityLabel = view.findViewById(R.id.longestActivityValue);
         ImageView userAvatar = view.findViewById(R.id.user_avatar);
 
         // Check for access token
@@ -55,6 +62,14 @@ public class ProfileFragment extends Fragment {
             e.printStackTrace();
         }
 
+        try {
+            getStats(token);
+        } catch (Exception e) {
+            Toast.Info(getContext(), getString(R.string.toast_log_in_first));
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+            e.printStackTrace();
+        }
+
         Log.i(TAG, "Avatar URL:" + avatarURL);
 
         Glide.with(this)
@@ -68,6 +83,8 @@ public class ProfileFragment extends Fragment {
                 logoutButtonOnClick(v);
             }
         });
+
+
 
         return view;
     }
@@ -96,6 +113,47 @@ public class ProfileFragment extends Fragment {
                         public void run() {
                             usernameLabel.setText(String.format("@%s", username));
                             displayNameLabel.setText(String.format("%s", displayName));
+                        }
+                    });
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getStats(final String accessToken) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject statsJson = UserService.GetStatistics(accessToken);
+
+                    int longestActivity = statsJson.getInt("longest_activity");
+                    int minutesSpent = statsJson.getInt("minutes_spent");
+
+                    requireActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (longestActivity / 60 == 0) {
+                                longestActivityLabel.setText(String.format("%dm", longestActivity));
+                            } else {
+                                longestActivityLabel.setText(String.format("%dh %dm", longestActivity / 60, longestActivity % 60));
+                            }
+
+                            if (minutesSpent / 60 == 0) {
+                                minutesSpentLabel.setText(String.format("%dm", minutesSpent));
+                            } else {
+                                minutesSpentLabel.setText(String.format("%dh %dm", minutesSpent / 60, minutesSpent % 60));
+                            }
                         }
                     });
                 } catch (Exception e) {

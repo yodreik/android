@@ -215,4 +215,48 @@ public class UserService {
             executor.shutdown();
         }
     }
+
+    public static JSONObject GetStatistics(String accessToken) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<JSONObject> future = executor.submit(new Callable<JSONObject>() {
+            @Override
+            public JSONObject call() throws Exception {
+                String url = BASEPATH + "/statistics";
+                URL obj = new URL(url);
+                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+                con.setRequestMethod("GET");
+                con.setRequestProperty("Content-Type", "application/json; utf-8");
+                con.setRequestProperty("Accept", "application/json");
+                con.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+                int responseCode = con.getResponseCode();
+
+                Log.e("DREIK", "Status code: " + responseCode);
+                Log.e("DREIK", "Request method: " + con.getRequestMethod());
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+
+                    return new JSONObject(response.toString());
+                } else {
+                    throw new Exception("Failed to get statistics, status: " + responseCode);
+                }
+            }
+        });
+
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new Exception("Error during network operation: " + e.getMessage(), e);
+        } finally {
+            executor.shutdown();
+        }
+    }
 }

@@ -7,6 +7,13 @@
         android:layout_height="match_parent"
         tools:context=".ProfileFragment">
 
+    <ImageView
+            android:src="@drawable/sandclock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/sandclockIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp" android:layout_marginStart="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/longestActivityTitle"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/usernameLabel"
@@ -41,5 +48,37 @@
             app:layout_constraintTop_toTopOf="parent"
             android:onClick="logoutButtonOnClick"
             app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+            android:src="@drawable/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/clockIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp" android:layout_marginStart="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/timeSpentTitle"/>
+    <TextView
+            android:text="Time Spent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/timeSpentTitle"
+            android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="40dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="364dp"/>
+    <TextView
+            android:text="0m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/timeSpentValue"
+            app:layout_constraintStart_toEndOf="@+id/clockIcon" android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/timeSpentTitle" android:layout_marginStart="10dp"/>
+    <TextView
+            android:text="Longest Activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/longestActivityTitle"
+            app:layout_constraintTop_toBottomOf="@+id/clockIcon"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="40dp" android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+    <TextView
+            android:text="0m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/longestActivityValue"
+            app:layout_constraintStart_toEndOf="@+id/sandclockIcon" android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/longestActivityTitle" android:layout_marginStart="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
