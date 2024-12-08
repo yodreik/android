@@ -5,6 +5,11 @@
             android:icon="@drawable/home"
             android:title="@string/menu_element_home" />
     <item
+            android:id="@+id/streak"
+            android:icon="@drawable/lightning"
+            android:title="@string/menu_element_streak"/>
+
+    <item
             android:id="@+id/profile"
             android:icon="@drawable/profile"
             android:title="@string/menu_element_profile"/>

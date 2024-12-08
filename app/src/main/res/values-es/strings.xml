@@ -3,6 +3,7 @@
 
     <!-- Menu -->
     <string name="menu_element_home">Inicio</string>
+    <string name="menu_element_streak">Racha</string>
     <string name="menu_element_profile">Perfil</string>
 
     <!-- Login -->

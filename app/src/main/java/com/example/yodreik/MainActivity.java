@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.profile) {
                 loadFragment(new ProfileFragment());
                 return true;
+            } else if (item.getItemId() == R.id.streak) {
+                loadFragment(new StreakFragment());
+                return true;
             }
             return false;
         });
