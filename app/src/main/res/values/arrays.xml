@@ -1,0 +1,14 @@
+<resources>
+    <string-array name="motivation_quotes">
+        <item>Exercise is a celebration of what your body can do, not a punishment for what you ate.</item>
+        <item>Believe you can and you\'re halfway there.</item>
+        <item>The only bad workout is the one that didn\'t happen.</item>
+        <item>You miss 100% of the shots you don\'t take.</item>
+        <item>It does not matter how slowly you go as long as you do not stop.</item>
+        <item>Pain is temporary. Quitting lasts forever.</item>
+        <item>The greatest glory in living lies not in never falling, but in rising every time we fall.</item>
+        <item>Success is not final, failure is not fatal: It is the courage to continue that counts.</item>
+        <item>Champions are made from something they have deep inside them - a desire, a dream, a vision.</item>
+        <item>You don\'t have to be great to start, but you have to start to be great.</item>
+    </string-array>
+</resources>

@@ -3,7 +3,8 @@
 
     <!-- Menu -->
     <string name="menu_element_home">Inicio</string>
-    <string name="menu_element_streak">Racha</string>
+    <string name="menu_element_motivation">Motivación</string>
+    <string name="menu_element_history">Historial</string>
     <string name="menu_element_profile">Perfil</string>
 
     <!-- Login -->
@@ -24,6 +25,9 @@
     <string name="create_workout_input_date">Fecha</string>
     <string name="create_workout_input_duration">Duración</string>
     <string name="create_workout_input_kind">Tipo</string>
+
+    <!-- Motivation -->
+    <string name="motivation_title">Tu cita diaria</string>
 
     <!-- Home -->
     <string name="home_button_create_workout">Crear entrenamiento</string>

@@ -1,0 +1,13 @@
+<resources>
+    <string-array name="motivation_quotes">
+        <item>El ejercicio es una celebración de lo que tu cuerpo puede hacer, no un castigo por lo que comiste.</item>
+        <item>Creer que puedes es estar a mitad de camino.</item>
+        <item>El único mal entrenamiento es el que no sucedió.</item>
+        <item>Fallas el 100% de los tiros que no tomas.</item>
+        <item>No importa lo lento que vayas, mientras no te detengas.</item>
+        <item>El dolor es temporal. Rendirse dura para siempre.</item>
+        <item>La mayor gloria en vivir no radica en no caer nunca, sino en levantarnos cada vez que caemos.</item>
+        <item>El éxito no es definitivo, el fracaso no es fatal: es el valor de continuar lo que cuenta.</item>
+        <item>Los campeones se hacen de algo que tienen profundamente dentro de ellos: un deseo, un sueño, una visión.</item>
+    </string-array>
+</resources>

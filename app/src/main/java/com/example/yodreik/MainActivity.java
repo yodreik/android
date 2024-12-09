@@ -35,8 +35,11 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.profile) {
                 loadFragment(new ProfileFragment());
                 return true;
-            } else if (item.getItemId() == R.id.streak) {
-                loadFragment(new StreakFragment());
+            } else if (item.getItemId() == R.id.motivation) {
+                loadFragment(new MotivationFragment());
+                return true;
+            } else if (item.getItemId() == R.id.history) {
+                loadFragment(new HistoryFragment());
                 return true;
             }
             return false;

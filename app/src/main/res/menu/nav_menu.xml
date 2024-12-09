@@ -5,9 +5,14 @@
             android:icon="@drawable/home"
             android:title="@string/menu_element_home" />
     <item
-            android:id="@+id/streak"
+            android:id="@+id/motivation"
             android:icon="@drawable/lightning"
-            android:title="@string/menu_element_streak"/>
+            android:title="@string/menu_element_motivation"/>
+
+    <item
+            android:id="@+id/history"
+            android:icon="@drawable/history"
+            android:title="@string/menu_element_history"/>
 
     <item
             android:id="@+id/profile"

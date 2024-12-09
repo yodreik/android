@@ -3,7 +3,8 @@
 
     <!-- Menu -->
     <string name="menu_element_home">Home</string>
-    <string name="menu_element_streak">Streak</string>
+    <string name="menu_element_motivation">Motivation</string>
+    <string name="menu_element_history">History</string>
     <string name="menu_element_profile">Profile</string>
 
     <!-- Login -->
@@ -24,6 +25,9 @@
     <string name="create_workout_input_date">Date</string>
     <string name="create_workout_input_duration">Duration</string>
     <string name="create_workout_input_kind">Kind</string>
+
+    <!-- Motivation -->
+    <string name="motivation_title">Your daily quote</string>
 
     <!-- Home -->
     <string name="home_button_create_workout">Create workout</string>

@@ -1,0 +1,37 @@
+package com.example.yodreik;
+
+public class WorkoutHistoryRecord {
+    private String workoutType;
+    private String workoutDate;
+    private int workoutDuration;
+
+    public WorkoutHistoryRecord(String workoutType, String workoutDate, int workoutDuration) {
+        this.workoutType = workoutType;
+        this.workoutDate = workoutDate;
+        this.workoutDuration = workoutDuration;
+    }
+
+    public String getWorkoutType() {
+        return workoutType;
+    }
+
+    public void setWorkoutType(String workoutType) {
+        this.workoutType = workoutType;
+    }
+
+    public String getWorkoutDate() {
+        return workoutDate;
+    }
+
+    public void setWorkoutDate(String workoutDate) {
+        this.workoutDate = workoutDate;
+    }
+
+    public int getWorkoutDuration() {
+        return workoutDuration;
+    }
+
+    public void setWorkoutDuration(int workoutDuration) {
+        this.workoutDuration = workoutDuration;
+    }
+}

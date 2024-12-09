@@ -3,7 +3,8 @@
 
     <!-- Menu -->
     <string name="menu_element_home">Главная</string>
-    <string name="menu_element_streak">Стрик</string>
+    <string name="menu_element_motivation">Мотивация</string>
+    <string name="menu_element_history">История</string>
     <string name="menu_element_profile">Профиль</string>
 
     <!-- Login -->
@@ -24,6 +25,9 @@
     <string name="create_workout_input_date">Дата</string>
     <string name="create_workout_input_duration">Длительность</string>
     <string name="create_workout_input_kind">Тип</string>
+
+    <!-- Motivation -->
+    <string name="motivation_title">Your daily quote</string>
 
     <!-- Home -->
     <string name="home_button_create_workout">Создать тренировку</string>

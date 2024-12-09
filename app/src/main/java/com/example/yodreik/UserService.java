@@ -1,17 +1,25 @@
 package com.example.yodreik;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.*;
 import android.util.Log;
 import org.json.JSONObject;
+import okhttp3.Request;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
+import com.google.gson.Gson;
 
 public class UserService {
     private static final String BASEPATH = "https://dreik.d.qarwe.online/api";
     private static final String TAG = "UserService";
+    private static final OkHttpClient client = new OkHttpClient();
+    private static final Gson gson = new Gson();
 
     public static JSONObject Create(String email, String password, String username) throws Exception {
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -216,6 +224,47 @@ public class UserService {
         }
     }
 
+    public static ActivityResponse GetActivity(String accessToken) throws Exception {
+    ExecutorService executor = Executors.newSingleThreadExecutor();
+    Future<ActivityResponse> future = executor.submit(new Callable<ActivityResponse>() {
+        @Override
+        public ActivityResponse call() throws Exception {
+            String url = BASEPATH + "/activity";
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+            int responseCode = con.getResponseCode();
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                return gson.fromJson(response.toString(), ActivityResponse.class);
+            } else {
+                throw new Exception("Failed to get activity, status: " + responseCode);
+            }
+        }
+    });
+
+    try {
+        return future.get();
+    } catch (InterruptedException | ExecutionException e) {
+        throw new Exception("Error during network operation: " + e.getMessage(), e);
+    } finally {
+        executor.shutdown();
+    }
+}
+
     public static JSONObject GetStatistics(String accessToken) throws Exception {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<JSONObject> future = executor.submit(new Callable<JSONObject>() {
@@ -260,3 +309,4 @@ public class UserService {
         }
     }
 }
+
