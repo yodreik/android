@@ -1,14 +1,16 @@
 package com.example.yodreik;
 
 public class WorkoutHistoryRecord {
-    private String workoutType;
-    private String workoutDate;
-    private int workoutDuration;
+    public String workoutType;
+    public String workoutDate;
+    public int workoutDuration;
+    public String workoutId;
 
-    public WorkoutHistoryRecord(String workoutType, String workoutDate, int workoutDuration) {
+    public WorkoutHistoryRecord(String workoutType, String workoutDate, int workoutDuration, String workoutId) {
         this.workoutType = workoutType;
         this.workoutDate = workoutDate;
         this.workoutDuration = workoutDuration;
+        this.workoutId = workoutId;
     }
 
     public String getWorkoutType() {

@@ -308,5 +308,38 @@ public class UserService {
             executor.shutdown();
         }
     }
+
+    public static void DeleteWorkout(String accessToken, String id) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<Void> future = executor.submit(new Callable<Void>() {
+            @Override
+            public Void call() throws Exception {
+                String url = BASEPATH + "/workout/" + id;
+                URL obj = new URL(url);
+                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+                con.setRequestMethod("DELETE");
+                con.setRequestProperty("Content-Type", "application/json; utf-8");
+                con.setRequestProperty("Accept", "application/json");
+                con.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+                int responseCode = con.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    return null;
+                } else {
+                    throw new Exception("Failed to delete workout, status: " + responseCode);
+                }
+            }
+        });
+
+        try {
+            future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new Exception("Error during network operation: " + e.getMessage(), e);
+        } finally {
+            executor.shutdown();
+        }
+    }
 }
 

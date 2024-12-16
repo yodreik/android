@@ -41,13 +41,13 @@ private List<WorkoutHistoryRecord> workoutRecords;
             ActivityResponse activity = UserService.GetActivity(Preference.GetAccessToken(getContext()));
 
             for (Workout workout : activity.getWorkouts()) {
-                workouts.add(new WorkoutHistoryRecord(workout.getKind(), workout.getDate(), workout.getDuration()));
+                workouts.add(new WorkoutHistoryRecord(workout.getKind(), workout.getDate(), workout.getDuration(), workout.getId()));
             }
         } catch (Exception e) {
-            workouts.add(new WorkoutHistoryRecord("Running", "01-10-2023", 30));
-            workouts.add(new WorkoutHistoryRecord("Cycling", "02-10-2023", 69));
-            workouts.add(new WorkoutHistoryRecord("Yoga", "03-10-2023", 121));
-            workouts.add(new WorkoutHistoryRecord("Yoga", "01-09-2023", 121));
+            workouts.add(new WorkoutHistoryRecord("Running", "01-10-2023", 30, "aaa-bbb-ccc-aaa"));
+            workouts.add(new WorkoutHistoryRecord("Cycling", "02-10-2023", 69, "aaa-bbb-ccc-aaa"));
+            workouts.add(new WorkoutHistoryRecord("Yoga", "03-10-2023", 121, "aaa-bbb-ccc-aaa"));
+            workouts.add(new WorkoutHistoryRecord("Yoga", "01-09-2023", 121, "aaa-bbb-ccc-aaa"));
         }
 
         // sort by date
