@@ -5,13 +5,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import com.example.yodreik.utils.LocaleHelper;
-
-import java.util.Locale;
-
-import static androidx.core.app.ActivityCompat.recreate;
 
 public class HomeFragment extends Fragment {
     @Override
