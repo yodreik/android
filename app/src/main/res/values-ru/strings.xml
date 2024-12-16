@@ -2,6 +2,7 @@
     <string name="app_name">yodreik</string>
 
     <!-- Menu -->
+    <string name="duration">Продолжительность: %d</string>
     <string name="menu_element_home">Главная</string>
     <string name="menu_element_motivation">Мотивация</string>
     <string name="menu_element_history">История</string>
@@ -22,12 +23,14 @@
     <string name="button_register">Создать</string>
 
     <!-- Create workout -->
+    <string name="create_workout_title">Создать тренировку</string>
     <string name="create_workout_input_date">Дата</string>
     <string name="create_workout_input_duration">Длительность</string>
     <string name="create_workout_input_kind">Тип</string>
 
     <!-- Motivation -->
-    <string name="motivation_title">Your daily quote</string>
+    <string name="cancel">Отмена</string>
+    <string name="motivation_title">Цитата на день</string>
 
     <!-- Home -->
     <string name="home_button_create_workout">Создать тренировку</string>
@@ -41,13 +44,25 @@
     <string name="toast_login_too_short">Логин слишком короткий</string>
     <string name="toast_login_too_long">Логин слишком длинный</string>
     <string name="toast_password_length_incorrect">Пароль должен быть между 8 и 50 символами</string>
-    <string name="toast_logged_id_as">Вы вошли как @</string>
+    <string name="toast_logged_in_as">Вы вошли как @%s</string>
 
-    <string name="toast_log_in_first">Сначала войти в аккаунт</string>
+    <string name="toast_log_in_first">Сначала войдите в аккаунт</string>
     <string name="toast_logged_out">Вы вышли из аккаунта</string>
 
     <string name="toast_username_length_incorrect">Имя пользователя должно быть между 5 и 32 символами</string>
     <string name="toast_passwords_dont_match">Пароли не совпадают</string>
     <string name="toast_registered_success">Вы успешно зарегистрировались. Подтвердите аккаунт по почте</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="delete_workout_record">Удаление тренировки</string>
+    <string name="sure_to_delete_workout">Уверены что хотите удалить тренировку?</string>
+    <string name="delete_workout_success">Тренировка успешно удалена</string>
+    <string name="delete_workout_error">Произошла ошибка при удалении тренировки</string>
+    <string name="date">Дата: %s</string>
+    <string name="create">Создать</string>
+    <string name="latest_workouts">Последние тренировки</string>
 
+    <!-- Statistics -->
+    <string name="statistics_time_spent">Проведенное время</string>
+    <string name="statistics_longest_workout">Самая длинная тренировка</string>
 </resources>

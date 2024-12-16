@@ -20,8 +20,8 @@ public class CreateWorkoutFragment extends DialogFragment {
         View dialogView = inflater.inflate(R.layout.fragment_create_workout, null);
 
         builder.setView(dialogView)
-                .setTitle("Create workout record")
-                .setPositiveButton("Create", (dialog, id) -> {
+                .setTitle(R.string.create_workout_title)
+                .setPositiveButton(R.string.create, (dialog, id) -> {
                     // ok
                     EditText editWorkoutDate = dialogView.findViewById(R.id.edit_workout_date);
                     String date = editWorkoutDate.getText().toString();
@@ -51,7 +51,7 @@ public class CreateWorkoutFragment extends DialogFragment {
                         Toast.Error(getContext(), getString(R.string.toast_something_went_wrong));
                     }
                 })
-                .setNegativeButton("Cancel", (dialog, id) -> {
+                .setNegativeButton(R.string.cancel, (dialog, id) -> {
                     // cancel
                     CreateWorkoutFragment.this.getDialog().cancel();
                 });

@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
             JSONObject user = UserService.GetCurrentAccount(accessToken);
 
-            Toast.Success(getApplicationContext(), getString(R.string.toast_logged_id_as) + user.getString("username"));
+            Toast.Success(getApplicationContext(), getString(R.string.toast_logged_in_as, user.getString("username")));
 
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         } catch (Exception e) {

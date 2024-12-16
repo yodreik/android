@@ -37,8 +37,8 @@ public class WorkoutHistoryAdapter extends RecyclerView.Adapter<WorkoutHistoryAd
         WorkoutHistoryRecord record = workoutHistoryRecords.get(position);
         int pos = holder.getAdapterPosition();
         holder.workoutNameTextView.setText(record.getWorkoutType());
-        holder.workoutDateTextView.setText("Date: " + record.getWorkoutDate());
-        holder.workoutDurationTextView.setText("Duration: " + record.getWorkoutDuration());
+        holder.workoutDateTextView.setText(context.getString(R.string.date, record.getWorkoutDate()));
+        holder.workoutDurationTextView.setText(context.getString(R.string.duration, record.getWorkoutDuration()));
 
         holder.workoutId = record.workoutId;
 
@@ -46,9 +46,9 @@ public class WorkoutHistoryAdapter extends RecyclerView.Adapter<WorkoutHistoryAd
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
-                builder.setTitle("Delete Workout Record");
-                builder.setMessage("Are you sure you want to delete this workout record?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle(R.string.delete_workout_record);
+                builder.setMessage(R.string.sure_to_delete_workout);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
@@ -57,13 +57,13 @@ public class WorkoutHistoryAdapter extends RecyclerView.Adapter<WorkoutHistoryAd
                             workoutHistoryRecords.remove(pos);
                             notifyItemRemoved(pos);
 
-                            Toast.makeText(context, "Workout deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.delete_workout_success, Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
-                            Toast.makeText(context, "Can't delete workout", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.delete_workout_error, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

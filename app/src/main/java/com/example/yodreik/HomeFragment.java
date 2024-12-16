@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void onCreateWorkoutButtonClick(View view) {
-        LocaleHelper.Set(getActivity(), "en");
+//         LocaleHelper.Set(getActivity(), "en");
         CreateWorkoutFragment dialog = new CreateWorkoutFragment();
         dialog.show(getChildFragmentManager(), "CREATE_WORKOUT");
     }

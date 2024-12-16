@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">yodreik</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="date">Fecha: %s</string>
+    <string name="duration">Duración: %d</string>
 
     <!-- Menu -->
     <string name="menu_element_home">Inicio</string>
@@ -22,12 +26,12 @@
     <string name="button_register">Crear</string>
 
     <!-- Create workout -->
+    <string name="create_workout_title">Crear Entrenamiento</string>
     <string name="create_workout_input_date">Fecha</string>
     <string name="create_workout_input_duration">Duración</string>
     <string name="create_workout_input_kind">Tipo</string>
-
-    <!-- Motivation -->
-    <string name="motivation_title">Tu cita diaria</string>
+    <string name="create">Crear</string>
+    <string name="cancel">Cancelar</string>
 
     <!-- Home -->
     <string name="home_button_create_workout">Crear entrenamiento</string>
@@ -41,7 +45,7 @@
     <string name="toast_login_too_short">El usuario es demasiado corto</string>
     <string name="toast_login_too_long">El usuario es demasiado largo</string>
     <string name="toast_password_length_incorrect">La contraseña debe tener entre 8 y 50 caracteres</string>
-    <string name="toast_logged_id_as">Conectado como @</string>
+    <string name="toast_logged_in_as">Conectado como @%s</string>
 
     <string name="toast_log_in_first">Por favor, inicia sesión primero</string>
     <string name="toast_logged_out">Sesión cerrada</string>
@@ -50,4 +54,19 @@
     <string name="toast_passwords_dont_match">Las contraseñas no coinciden</string>
     <string name="toast_registered_success">Registrado con éxito. Verifica tu correo electrónico</string>
 
+    <!-- Delete Workout-->
+    <string name="delete_workout_record">Eliminar Registro de Entrenamiento</string>
+    <string name="sure_to_delete_workout">¿Estás seguro de que deseas eliminar este registro de entrenamiento?</string>
+    <string name="delete_workout_success">Entrenamiento eliminado con éxito</string>
+    <string name="delete_workout_error">No se puede eliminar el entrenamiento</string>
+
+    <!-- History-->
+    <string name="latest_workouts">Entrenamientos recientes</string>
+
+    <!-- Motivation-->
+    <string name="motivation_title">Tu cita diaria</string>
+
+    <!-- Statistics -->
+    <string name="statistics_time_spent">Tiempo invertido</string>
+    <string name="statistics_longest_workout">Entrenamiento más largo</string>
 </resources>
