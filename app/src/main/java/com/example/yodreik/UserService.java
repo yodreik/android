@@ -16,7 +16,7 @@ import okhttp3.Response;
 import com.google.gson.Gson;
 
 public class UserService {
-    private static final String BASEPATH = "https://dreik.d.qarwe.online/api";
+    private static final String BASEPATH = "https://yodreik.ndbtea.tech/api";
     private static final String TAG = "UserService";
     private static final OkHttpClient client = new OkHttpClient();
     private static final Gson gson = new Gson();

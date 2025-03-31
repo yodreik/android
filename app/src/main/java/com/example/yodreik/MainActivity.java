@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.history) {
                 loadFragment(new HistoryFragment());
                 return true;
+            } else if (item.getItemId() == R.id.workout) {
+                loadFragment(new WorkoutFragment());
+                return true;
             }
             return false;
         });
