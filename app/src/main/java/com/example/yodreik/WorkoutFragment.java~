@@ -27,9 +27,6 @@ public class WorkoutFragment extends Fragment {
         recyclerView = view.findViewById(R.id.exercise_list);
         recyclerView.setVisibility(View.GONE); // Hide the recycler view initially
 
-        confirmButton = view.findViewById(R.id.confirm_button);
-        confirmButton.setVisibility(View.GONE);
-
         exerciseList = new ArrayList<>();
         exerciseList.add(new Exercise("Bench Press", "Lie on a flat bench and press a barbell upwards", 3, 8, 100));
         exerciseList.add(new Exercise("Squats", "Stand with your feet shoulder-width apart and squat down", 3, 12, 150));
@@ -42,7 +39,6 @@ public class WorkoutFragment extends Fragment {
         startWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmButton.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.VISIBLE); // Show the recycler view when the start workout button is pressed
                 recyclerView.setAdapter(exerciseAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
