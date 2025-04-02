@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.yodreik.utils.Toast;
 
 public class WorkoutFragment extends Fragment {
     private ExerciseAdapter exerciseAdapter;
@@ -58,13 +58,13 @@ public class WorkoutFragment extends Fragment {
             public void onClick(View v) {
                 for (int i = 0; i < exerciseList.size(); i++) {
                     if (!exerciseList.get(i).isDone()) {
-                        Toast.makeText(getActivity(), "Please complete all exercises before confirming", Toast.LENGTH_SHORT).show();
+                        Toast.Error(getContext(), "Please complete all exercises before confirming");
                         return;
                     }
                 }
 
                 long workoutDurationMinutes = ((System.currentTimeMillis() - workoutStartTime) / 1000) / 60;
-                Toast.makeText(getActivity(), "Workout took " + workoutDurationMinutes + "mins", Toast.LENGTH_SHORT).show();
+                Toast.Success(getContext(), "Workout took " + workoutDurationMinutes + "mins");
             }
         });
 
