@@ -10,23 +10,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp" />
 
     <TextView
             android:id="@+id/exercise_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
-
-    <CheckBox
-            android:id="@+id/done_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp" />
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+        <CheckBox
+                android:id="@+id/done_checkbox"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed?"
+                android:layout_marginLeft="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
 
         <TextView
                 android:layout_width="0dp"
@@ -45,7 +62,8 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
 
         <TextView
                 android:layout_width="0dp"
@@ -70,8 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Weight: " />
-
+                android:text="Weight: "/>
         <TextView
                 android:id="@+id/weight"
                 android:layout_width="0dp"

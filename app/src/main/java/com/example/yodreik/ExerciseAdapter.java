@@ -63,9 +63,9 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             exerciseNameTextView.setText(exercise.getName());
             exerciseDescriptionTextView.setText(exercise.getDescription());
             doneCheckBox.setChecked(exercise.isDone());
-            setsTextView.setText("Sets: " + exercise.getSets());
-            repsTextView.setText("Reps: " + exercise.getReps());
-            weightTextView.setText("Weight: " + exercise.getWeight());
+            setsTextView.setText(String.valueOf(exercise.getSets()));
+            repsTextView.setText(String.valueOf(exercise.getReps()));
+            weightTextView.setText(String.valueOf(exercise.getWeight()));
             doneCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
