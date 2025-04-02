@@ -17,6 +17,7 @@ public class WorkoutFragment extends Fragment {
     private List<Exercise> exerciseList;
     private Button confirmButton;
     private Button startWorkoutButton;
+    private long workoutStartTime;
     private RecyclerView recyclerView;
 
     @Override
@@ -25,7 +26,7 @@ public class WorkoutFragment extends Fragment {
 
         startWorkoutButton = view.findViewById(R.id.start_workout_button);
         recyclerView = view.findViewById(R.id.exercise_list);
-        recyclerView.setVisibility(View.GONE); // Hide the recycler view initially
+        recyclerView.setVisibility(View.GONE);
 
         confirmButton = view.findViewById(R.id.confirm_button);
         confirmButton.setVisibility(View.GONE);
@@ -43,10 +44,11 @@ public class WorkoutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 confirmButton.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.VISIBLE); // Show the recycler view when the start workout button is pressed
+                recyclerView.setVisibility(View.VISIBLE);
                 recyclerView.setAdapter(exerciseAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                startWorkoutButton.setVisibility(View.GONE); // Hide the start workout button
+                startWorkoutButton.setVisibility(View.GONE);
+                workoutStartTime = System.currentTimeMillis();
             }
         });
 
@@ -61,7 +63,8 @@ public class WorkoutFragment extends Fragment {
                     }
                 }
 
-                Toast.makeText(getActivity(), "Workout completed!", Toast.LENGTH_SHORT).show();
+                long workoutDurationMinutes = ((System.currentTimeMillis() - workoutStartTime) / 1000) / 60;
+                Toast.makeText(getActivity(), "Workout took " + workoutDurationMinutes + "mins", Toast.LENGTH_SHORT).show();
             }
         });
 
