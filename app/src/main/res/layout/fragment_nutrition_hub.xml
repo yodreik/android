@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <EditText
+            android:id="@+id/calorie_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter calories"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textSize="18sp" />
+
+    <EditText
+            android:id="@+id/protein_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter protein"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textSize="18sp" />
+
+    <EditText
+            android:id="@+id/carb_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter carbs"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textSize="18sp" />
+
+    <EditText
+            android:id="@+id/fat_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Enter fat"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textSize="18sp" />
+
+    <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Save"
+            android:layout_marginTop="16dp"
+            android:minHeight="48dp"
+            android:minWidth="48dp" />
+
+    <Button
+            android:id="@+id/reset_button"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Reset"
+            android:backgroundTint="#AA0000"
+            android:foregroundTint="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:minHeight="48dp"
+            android:minWidth="48dp" />
+
+    <TextView
+            android:id="@+id/total_calories_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    <TextView
+            android:id="@+id/total_protein_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    <TextView
+            android:id="@+id/total_carb_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    <TextView
+            android:id="@+id/total_fat_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Target Stats"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        <EditText
+                android:id="@+id/daily_calorie_goal_input"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter daily calorie goal"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+        <EditText
+                android:id="@+id/daily_protein_goal_input"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter daily protein goal"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+        <EditText
+                android:id="@+id/daily_carb_goal_input"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter daily carb goal"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+        <EditText
+                android:id="@+id/daily_fat_goal_input"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter daily fat goal"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+        <Button
+                android:id="@+id/save_target_button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Save Targets"
+                android:layout_marginTop="16dp"
+                android:minHeight="48dp"
+                android:minWidth="48dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

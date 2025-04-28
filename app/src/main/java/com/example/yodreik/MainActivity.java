@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new ProfileFragment());
                 return true;
             } else if (item.getItemId() == R.id.motivation) {
-                loadFragment(new MotivationFragment());
+                loadFragment(new NutritionHubFragment());
                 return true;
             } else if (item.getItemId() == R.id.history) {
                 loadFragment(new HistoryFragment());
